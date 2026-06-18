@@ -1,0 +1,539 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--green:#2E8B3A;--red:#C0392B;--cream:#FFFDF5;--dark:#1A0A00;--gold:#F0B429;--white:#ffffff;}
+body{font-family:'Nunito',sans-serif;background:#f0f0f0;color:var(--dark);}
+
+/* TOP BAR */
+.topbar{background:var(--dark);padding:0.45rem 1.25rem;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.topbar-left{font-size:0.72rem;color:rgba(255,255,255,0.5);font-weight:600;}
+.lang-toggle{display:flex;background:rgba(255,255,255,0.1);border-radius:99px;padding:3px;gap:2px;}
+.lang-btn{padding:2px 10px;border-radius:99px;border:none;font-family:'Nunito',sans-serif;font-size:0.7rem;font-weight:800;cursor:pointer;background:transparent;color:rgba(255,255,255,0.45);transition:all 0.2s;}
+.lang-btn.active{background:var(--white);color:var(--dark);}
+
+/* HERO */
+.hero{background:var(--green);padding:1.5rem 1.25rem 1.25rem;text-align:center;position:relative;overflow:hidden;}
+.flag-top{height:7px;background:linear-gradient(90deg,var(--green) 33%,var(--white) 33%,var(--white) 66%,var(--red) 66%);position:absolute;top:0;left:0;right:0;}
+.flag-bot{height:7px;background:linear-gradient(90deg,var(--green) 33%,var(--white) 33%,var(--white) 66%,var(--red) 66%);position:absolute;bottom:0;left:0;right:0;}
+.hero-sub-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(0.85rem,3vw,1.1rem);color:rgba(255,255,255,0.75);letter-spacing:0.25em;margin-bottom:0.1rem;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,8vw,3.8rem);color:var(--red);letter-spacing:0.08em;line-height:1;text-shadow:2px 2px 0 #fff,-1px -1px 0 #fff;}
+.hero-tagline{font-family:'Bebas Neue',sans-serif;font-size:clamp(0.7rem,2.5vw,0.9rem);color:rgba(255,255,255,0.6);letter-spacing:0.15em;margin-top:0.2rem;}
+.hero-phones{display:flex;justify-content:center;gap:0.6rem;flex-wrap:wrap;margin-top:0.6rem;}
+.phone-pill{background:var(--red);color:var(--white);font-weight:800;font-size:0.78rem;padding:0.28rem 0.85rem;border-radius:99px;}
+.badges{display:flex;justify-content:center;gap:0.4rem;flex-wrap:wrap;margin-top:0.4rem;}
+.badge{display:inline-block;font-size:0.68rem;font-weight:800;padding:0.22rem 0.7rem;border-radius:99px;letter-spacing:0.06em;}
+.badge-gold{background:var(--gold);color:var(--dark);}
+.badge-white{background:var(--white);color:var(--red);}
+
+/* NAV TABS */
+.nav-tabs{background:var(--red);display:flex;overflow-x:auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.1em;color:rgba(255,255,255,0.6);padding:0.55rem 1rem;border:none;background:transparent;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:all 0.2s;flex-shrink:0;}
+.nav-tab.active{color:var(--white);border-bottom-color:var(--gold);}
+
+/* PANELS */
+.page{max-width:720px;margin:0 auto;padding:0.75rem 0.9rem 2rem;}
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* MAIN ORDER PANEL LAYOUT */
+.order-layout{display:grid;grid-template-columns:1fr 260px;gap:1rem;align-items:start;}
+@media(max-width:580px){.order-layout{grid-template-columns:1fr;}}
+
+/* MENU ITEMS */
+.cat-label{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.1em;color:var(--green);padding-bottom:0.3rem;border-bottom:2px solid var(--green);margin:0.85rem 0 0.5rem;}
+.cat-label.red{color:var(--red);border-bottom-color:var(--red);}
+.item-row{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 0.75rem;background:var(--white);border-radius:8px;margin-bottom:0.4rem;border:1px solid #E8E4DF;gap:0.5rem;transition:border-color 0.15s;}
+.item-row:hover{border-color:var(--green);}
+.ir-left{flex:1;}
+.ir-name{font-weight:700;font-size:0.85rem;color:var(--dark);line-height:1.2;}
+.ir-desc{font-size:0.72rem;color:#999;font-weight:500;margin-top:1px;}
+.ir-price{font-size:0.8rem;font-weight:700;color:var(--green);white-space:nowrap;margin:0 0.5rem;}
+.qty-ctrl{display:flex;align-items:center;gap:0.3rem;flex-shrink:0;}
+.qbtn{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--green);background:var(--white);color:var(--green);font-size:0.95rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;line-height:1;}
+.qbtn:hover{background:var(--green);color:var(--white);}
+.qnum{font-size:0.82rem;font-weight:800;color:var(--dark);min-width:14px;text-align:center;}
+.specials-strip{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.75rem;}
+.sp-card{border-radius:8px;padding:0.6rem 0.75rem;text-align:center;}
+.sp-card.fri{background:var(--green);color:var(--white);}
+.sp-card.sat{background:var(--red);color:var(--white);}
+.sp-day{font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;}
+.sp-name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.08em;}
+.sp-sub{font-size:0.68rem;opacity:0.75;}
+
+/* CART */
+.cart-box{background:var(--white);border-radius:12px;border:1px solid #E8E4DF;padding:0.9rem;position:sticky;top:0.75rem;}
+.cart-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.1em;color:var(--dark);margin-bottom:0.5rem;padding-bottom:0.4rem;border-bottom:1px solid #E8E4DF;}
+.cart-empty{font-size:0.78rem;color:#ccc;text-align:center;padding:0.75rem 0;}
+.cart-line{display:flex;justify-content:space-between;align-items:flex-start;font-size:0.78rem;padding:0.28rem 0;border-bottom:0.5px solid #F0EDE8;gap:0.4rem;}
+.cl-name{color:var(--dark);font-weight:600;flex:1;line-height:1.3;}
+.cl-qty{color:#aaa;font-size:0.7rem;flex-shrink:0;}
+.cl-price{color:var(--red);font-weight:700;flex-shrink:0;}
+.cart-total{display:flex;justify-content:space-between;font-weight:800;font-size:0.9rem;padding-top:0.5rem;margin-top:0.3rem;border-top:1.5px solid #E8E4DF;}
+.ct-label{color:var(--dark);}
+.ct-amt{color:var(--red);}
+.form-sep{height:0.5px;background:#E8E4DF;margin:0.65rem 0;}
+.fl{font-size:0.68rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#777;display:block;margin-bottom:0.2rem;}
+.fi{width:100%;padding:0.45rem 0.65rem;border:1px solid #DDD;border-radius:7px;font-size:0.82rem;font-family:'Nunito',sans-serif;color:var(--dark);margin-bottom:0.45rem;}
+.fi:focus{outline:none;border-color:var(--green);}
+.fs{width:100%;padding:0.45rem 0.65rem;border:1px solid #DDD;border-radius:7px;font-size:0.82rem;font-family:'Nunito',sans-serif;color:var(--dark);background:var(--white);margin-bottom:0.45rem;}
+.tarleton-row{display:flex;align-items:center;gap:0.4rem;margin-bottom:0.45rem;}
+.tarleton-row input{accent-color:var(--green);}
+.tarleton-row label{font-size:0.72rem;font-weight:700;color:var(--dark);}
+.place-btn{width:100%;background:var(--red);color:var(--white);border:none;border-radius:8px;padding:0.65rem;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;cursor:pointer;transition:opacity 0.15s;margin-top:0.25rem;}
+.place-btn:hover{opacity:0.88;}
+.place-btn:disabled{opacity:0.4;cursor:not-allowed;}
+.cash-note{font-size:0.67rem;color:#bbb;text-align:center;margin-top:0.3rem;font-weight:600;}
+
+/* SUCCESS */
+.success-wrap{display:none;margin-top:0.75rem;}
+.success-wrap.show{display:block;}
+.success-card{background:#E8F5EE;border:1px solid #9FE1CB;border-radius:10px;padding:1rem;text-align:center;margin-bottom:0.6rem;}
+.sc-icon{font-size:1.75rem;}
+.sc-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:#0F6E56;letter-spacing:0.1em;margin:0.2rem 0;}
+.sc-sub{font-size:0.78rem;color:#555;line-height:1.5;}
+.review-card{background:var(--white);border:2px solid var(--gold);border-radius:10px;padding:0.85rem;text-align:center;}
+.rc-title{font-weight:800;font-size:0.85rem;color:var(--dark);margin-bottom:0.2rem;}
+.rc-sub{font-size:0.72rem;color:#888;margin-bottom:0.5rem;}
+.stars{display:flex;justify-content:center;gap:0.25rem;margin-bottom:0.5rem;}
+.star{font-size:1.4rem;color:#DDD;cursor:pointer;transition:color 0.15s;}
+.star.lit{color:var(--gold);}
+.review-link{display:block;background:var(--gold);color:var(--dark);font-weight:800;font-size:0.8rem;padding:0.5rem;border-radius:7px;text-decoration:none;margin-bottom:0.3rem;transition:opacity 0.15s;}
+.review-link:hover{opacity:0.88;}
+.skip-lnk{font-size:0.68rem;color:#bbb;background:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;}
+
+/* ABOUT / CATERING / LOCATION */
+.section-hdr{display:flex;align-items:center;gap:0.6rem;margin:0.85rem 0 0.6rem;}
+.sh-bar{flex:1;height:2px;background:var(--green);}
+.sh-bar.red{background:var(--red);}
+.sh-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.1em;color:var(--green);white-space:nowrap;}
+.sh-title.red{color:var(--red);}
+
+.about-block{background:var(--white);border-radius:12px;padding:1.1rem 1.25rem;border:0.5px solid #E8E4DF;margin-bottom:0.65rem;}
+.ab-verse{border-left:3px solid var(--gold);padding-left:0.85rem;font-style:italic;font-size:0.88rem;color:#5A3A10;margin:0.6rem 0;line-height:1.6;}
+.ab-p{font-size:0.85rem;color:#555;line-height:1.75;margin-bottom:0.5rem;}
+.ab-p:last-child{margin-bottom:0;}
+.comm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.6rem;margin-top:0.5rem;}
+.comm-card{background:var(--white);border-radius:10px;padding:0.8rem;text-align:center;border:0.5px solid #E8E4DF;}
+.comm-icon{font-size:1.1rem;margin-bottom:0.3rem;}
+.comm-title{font-weight:800;font-size:0.8rem;color:var(--dark);margin-bottom:0.15rem;}
+.comm-sub{font-size:0.68rem;color:#888;line-height:1.4;}
+
+.catering-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.65rem;}
+.cat-card{background:var(--white);border-radius:10px;padding:0.9rem 1rem;border:0.5px solid #E8E4DF;}
+.cat-icon{font-size:1.3rem;margin-bottom:0.3rem;}
+.cat-title{font-weight:800;font-size:0.85rem;color:var(--dark);margin-bottom:0.2rem;}
+.cat-desc{font-size:0.75rem;color:#777;line-height:1.5;}
+.call-btn{display:block;width:100%;background:var(--green);color:var(--white);border:none;border-radius:10px;padding:0.7rem;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;cursor:pointer;margin-top:0.85rem;text-decoration:none;text-align:center;transition:opacity 0.15s;}
+.call-btn:hover{opacity:0.88;}
+.note-box{background:#FFF8E1;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:0.55rem 0.8rem;font-size:0.75rem;color:#854F0B;font-weight:600;margin-bottom:0.65rem;line-height:1.5;}
+
+.map-card{background:var(--white);border-radius:12px;border:0.5px solid #E8E4DF;overflow:hidden;margin-bottom:0.65rem;}
+.map-hdr{padding:0.85rem 1rem;display:flex;justify-content:space-between;align-items:flex-start;gap:0.75rem;flex-wrap:wrap;}
+.map-addr{font-size:0.85rem;font-weight:700;color:var(--dark);line-height:1.5;}
+.map-addr span{display:block;font-size:0.72rem;color:#888;font-weight:500;margin-top:1px;}
+.map-open-btn{display:inline-flex;align-items:center;gap:0.3rem;background:var(--green);color:var(--white);text-decoration:none;font-size:0.72rem;font-weight:800;padding:0.4rem 0.85rem;border-radius:7px;white-space:nowrap;flex-shrink:0;}
+.map-frame{width:100%;height:190px;border:none;display:block;border-top:0.5px solid #E8E4DF;}
+.hours-grid{display:flex;flex-direction:column;gap:0.35rem;}
+.hour-row{display:flex;justify-content:space-between;padding:0.45rem 0.75rem;background:var(--white);border-radius:7px;border:0.5px solid #E8E4DF;font-size:0.8rem;}
+.hr-day{font-weight:700;color:var(--dark);}
+.hr-time{color:#777;}
+
+/* FOOTER */
+.footer{background:var(--dark);padding:1.25rem;text-align:center;margin-top:1.5rem;}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.25rem;}
+.f-info{font-size:0.72rem;color:rgba(255,255,255,0.35);margin-bottom:0.2rem;}
+.f-verse{font-style:italic;font-size:0.7rem;color:rgba(255,255,255,0.25);margin-top:0.35rem;}
+</style>
+
+<h2 class="sr-only">Taqueria Ebenezer — order online, catering, location</h2>
+
+<div class="topbar">
+  <span class="topbar-left t" data-en="Stephenville TX · Near Tarleton State · Cash Only" data-es="Stephenville TX · Cerca de Tarleton · Solo Efectivo">Stephenville TX · Near Tarleton State · Cash Only</span>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en',this)">EN</button>
+    <button class="lang-btn" onclick="setLang('es',this)">ES</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="flag-top"></div>
+  <div class="hero-sub-title t" data-en="TAQUERIA" data-es="TAQUERIA">TAQUERIA</div>
+  <h1>EBENEZER</h1>
+  <div class="hero-tagline t" data-en="TACOS · BURRITOS · TORTAS · FLAUTAS · GORDITAS" data-es="TACOS · BURRITOS · TORTAS · FLAUTAS · GORDITAS">TACOS · BURRITOS · TORTAS · FLAUTAS · GORDITAS</div>
+  <div class="hero-phones">
+    <span class="phone-pill">&#128222; 254.592.4735</span>
+    <span class="phone-pill">&#128222; 254.434.3069</span>
+  </div>
+  <div class="badges">
+    <span class="badge badge-gold">&#128181; <span class="t" data-en="Cash Only" data-es="Solo Efectivo">Cash Only</span></span>
+    <span class="badge badge-white">&#127979; <span class="t" data-en="Tarleton ID = Discount!" data-es="ID de Tarleton = ¡Descuento!">Tarleton ID = Discount!</span></span>
+  </div>
+  <div class="flag-bot"></div>
+</div>
+
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="showPanel('order',this)">&#127828; <span class="t" data-en="ORDER" data-es="ORDENAR">ORDER</span></button>
+  <button class="nav-tab" onclick="showPanel('catering',this)">&#127881; <span class="t" data-en="CATERING" data-es="CATERING">CATERING</span></button>
+  <button class="nav-tab" onclick="showPanel('about',this)">&#10013; <span class="t" data-en="ABOUT US" data-es="NOSOTROS">ABOUT US</span></button>
+  <button class="nav-tab" onclick="showPanel('location',this)">&#128205; <span class="t" data-en="LOCATION" data-es="UBICACIÓN">LOCATION</span></button>
+</div>
+
+<div class="page">
+
+<!-- ══════════ ORDER PANEL ══════════ -->
+<div id="panel-order" class="panel active">
+  <div class="order-layout">
+    <div id="menu-col">
+      <div class="specials-strip">
+        <div class="sp-card fri">
+          <div class="sp-day t" data-en="EVERY FRIDAY" data-es="CADA VIERNES">EVERY FRIDAY</div>
+          <div class="sp-name">TAMALES</div>
+          <div class="sp-sub t" data-en="Limited — come early!" data-es="Limitados — ¡llega temprano!">Limited — come early!</div>
+        </div>
+        <div class="sp-card sat">
+          <div class="sp-day t" data-en="EVERY SATURDAY" data-es="CADA SÁBADO">EVERY SATURDAY</div>
+          <div class="sp-name">MENUDO</div>
+          <div class="sp-sub t" data-en="Traditional beef tripe soup" data-es="Caldo tradicional de res">Traditional beef tripe soup</div>
+        </div>
+      </div>
+
+      <div class="cat-label t" data-en="STREET TACOS" data-es="TACOS DE LA CALLE">STREET TACOS</div>
+      <div id="tacos-col"></div>
+
+      <div class="cat-label red t" data-en="MEAT BURRITOS" data-es="BURRITOS DE CARNE">MEAT BURRITOS</div>
+      <div class="note-box t" data-en="With beans, rice, cheese, onions & cilantro" data-es="Con frijoles, arroz, queso, cebolla y cilantro">With beans, rice, cheese, onions & cilantro</div>
+      <div id="burritos-col"></div>
+
+      <div class="cat-label t" data-en="BREAKFAST BURRITOS" data-es="BURRITOS DE DESAYUNO">BREAKFAST BURRITOS</div>
+      <div id="breakfast-col"></div>
+
+      <div class="cat-label red t" data-en="BREAKFAST PLATE" data-es="PLATO DE DESAYUNO">BREAKFAST PLATE</div>
+      <div id="bfplate-col"></div>
+
+      <div class="cat-label t" data-en="DRINKS & EXTRAS" data-es="BEBIDAS Y EXTRAS">DRINKS & EXTRAS</div>
+      <div id="drinks-col"></div>
+
+      <div class="cat-label red t" data-en="EXTRA COST ADD-ONS" data-es="EXTRAS CON COSTO">EXTRA COST ADD-ONS</div>
+      <div id="extras-col"></div>
+    </div>
+
+    <!-- CART -->
+    <div>
+      <div class="cart-box">
+        <div class="cart-title t" data-en="YOUR ORDER" data-es="TU ORDEN">YOUR ORDER</div>
+        <div id="cart-empty" class="cart-empty t" data-en="Tap + to add items" data-es="Toca + para agregar">Tap + to add items</div>
+        <div id="cart-lines"></div>
+        <div id="cart-total" class="cart-total" style="display:none;">
+          <span class="ct-label t" data-en="Total" data-es="Total">Total</span>
+          <span class="ct-amt" id="ct-amt">$0.00</span>
+        </div>
+        <div class="form-sep"></div>
+        <label class="fl t" data-en="NAME" data-es="NOMBRE">NAME</label>
+        <input class="fi" id="fname" type="text" placeholder="First name"/>
+        <label class="fl t" data-en="PHONE" data-es="TELÉFONO">PHONE</label>
+        <input class="fi" id="fphone" type="tel" placeholder="(254) 000-0000"/>
+        <label class="fl t" data-en="PICKUP TIME" data-es="HORA DE RECOGIDA">PICKUP TIME</label>
+        <select class="fs" id="ftime">
+          <option value="" class="t" data-en="Select time..." data-es="Selecciona...">Select time...</option>
+          <option>ASAP (~15 min)</option>
+          <option>30 minutes</option>
+          <option>45 minutes</option>
+          <option>1 hour</option>
+        </select>
+        <label class="fl t" data-en="NOTES" data-es="NOTAS">NOTES</label>
+        <input class="fi" id="fnotes" type="text" placeholder="e.g. extra salsa, no cilantro..."/>
+        <div class="tarleton-row">
+          <input type="checkbox" id="ftarleton"/>
+          <label for="ftarleton" class="t" data-en="Tarleton student — show ID for discount!" data-es="Estudiante de Tarleton — ¡muestra tu ID!">Tarleton student — show ID for discount!</label>
+        </div>
+        <button class="place-btn" id="place-btn" onclick="placeOrder()" disabled>
+          <span class="t" data-en="PLACE ORDER" data-es="ENVIAR ORDEN">PLACE ORDER</span>
+        </button>
+        <p class="cash-note t" data-en="Cash only at pickup · 420 W Lingleville Rd" data-es="Solo efectivo al recoger · 420 W Lingleville Rd">Cash only at pickup · 420 W Lingleville Rd</p>
+
+        <div class="success-wrap" id="success-wrap">
+          <div class="success-card">
+            <div class="sc-icon">&#10003;</div>
+            <div class="sc-title t" data-en="ORDER SENT!" data-es="¡ORDEN ENVIADA!">ORDER SENT!</div>
+            <div class="sc-sub" id="sc-sub"></div>
+          </div>
+          <div class="review-card">
+            <div class="rc-title t" data-en="Enjoyed your food? &#11088;" data-es="¿Te gustó la comida? &#11088;">Enjoyed your food? &#11088;</div>
+            <div class="rc-sub t" data-en="Help a local family business — leave us a Google review!" data-es="Ayuda a un negocio familiar — ¡déjanos una reseña en Google!">Help a local family business — leave us a Google review!</div>
+            <div class="stars" id="stars">
+              <span class="star lit" onclick="rateStar(1)">&#9733;</span>
+              <span class="star lit" onclick="rateStar(2)">&#9733;</span>
+              <span class="star lit" onclick="rateStar(3)">&#9733;</span>
+              <span class="star lit" onclick="rateStar(4)">&#9733;</span>
+              <span class="star lit" onclick="rateStar(5)">&#9733;</span>
+            </div>
+            <a class="review-link" href="https://search.google.com/local/writereview?placeid=0x8651b7d6e16163a3:0xcc6446f3e0b1552" target="_blank" onclick="reviewDone()">
+              <span class="t" data-en="Leave a Google Review &#8599;" data-es="Dejar Reseña en Google &#8599;">Leave a Google Review &#8599;</span>
+            </a>
+            <button class="skip-lnk t" onclick="skipReview()" data-en="Maybe next time" data-es="Quizás la próxima vez">Maybe next time</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CATERING PANEL ══════════ -->
+<div id="panel-catering" class="panel">
+  <div class="section-hdr"><div class="sh-bar"></div><div class="sh-title t" data-en="CATERING" data-es="CATERING">CATERING</div><div class="sh-bar"></div></div>
+  <div class="note-box t" data-en="We bring the truck to you! Perfect for any event in Stephenville and surrounding areas." data-es="¡Llevamos el truck a tu evento! Perfecto para cualquier evento en Stephenville y alrededores.">We bring the truck to you! Perfect for any event in Stephenville and surrounding areas.</div>
+  <div class="catering-grid">
+    <div class="cat-card"><div class="cat-icon">&#128149;</div><div class="cat-title t" data-en="Weddings & Quinceañeras" data-es="Bodas y Quinceañeras">Weddings & Quinceañeras</div><div class="cat-desc t" data-en="Full taco & burrito service for your special day. Custom menu available." data-es="Servicio completo para tu día especial. Menú personalizado disponible.">Full taco & burrito service for your special day. Custom menu available.</div></div>
+    <div class="cat-card"><div class="cat-icon">&#127979;</div><div class="cat-title">Tarleton Events</div><div class="cat-desc t" data-en="Game days, Greek life, dorm events & graduations. Tarleton's favorite truck!" data-es="Días de juego, vida griega, eventos universitarios y graduaciones.">Game days, Greek life, dorm events & graduations. Tarleton's favorite truck!</div></div>
+    <div class="cat-card"><div class="cat-icon">&#9981;</div><div class="cat-title t" data-en="Church & Community" data-es="Iglesia y Comunidad">Church & Community</div><div class="cat-desc t" data-en="Faith events, fundraisers, community gatherings. Special rates for nonprofits." data-es="Eventos de fe, recaudaciones, reuniones comunitarias. Tarifas especiales.">Faith events, fundraisers, community gatherings. Special rates for nonprofits.</div></div>
+    <div class="cat-card"><div class="cat-icon">&#127970;</div><div class="cat-title t" data-en="Corporate & Office" data-es="Empresas y Oficinas">Corporate & Office</div><div class="cat-desc t" data-en="Office lunches, company parties, employee appreciation days. We handle it all." data-es="Almuerzos de oficina, fiestas de empresa. Nosotros nos encargamos de todo.">Office lunches, company parties, employee appreciation days. We handle it all.</div></div>
+    <div class="cat-card"><div class="cat-icon">&#127878;</div><div class="cat-title t" data-en="Birthday Parties" data-es="Fiestas de Cumpleaños">Birthday Parties</div><div class="cat-desc t" data-en="Make your party unforgettable with a real taco truck experience!" data-es="¡Haz tu fiesta inolvidable con una experiencia de taco truck de verdad!">Make your party unforgettable with a real taco truck experience!</div></div>
+    <div class="cat-card"><div class="cat-icon">&#127944;</div><div class="cat-title t" data-en="Sports & School Events" data-es="Deportes y Escuela">Sports & School Events</div><div class="cat-desc t" data-en="Team banquets, school carnivals, athletic events — we've got you covered." data-es="Banquetes de equipo, eventos escolares — los tenemos cubiertos.">Team banquets, school carnivals, athletic events — we've got you covered.</div></div>
+  </div>
+  <a href="tel:2545924735" class="call-btn t" data-en="CALL TO BOOK CATERING — 254.592.4735" data-es="LLAMA PARA RESERVAR — 254.592.4735">CALL TO BOOK CATERING — 254.592.4735</a>
+</div>
+
+<!-- ══════════ ABOUT PANEL ══════════ -->
+<div id="panel-about" class="panel">
+  <div class="section-hdr"><div class="sh-bar"></div><div class="sh-title t" data-en="OUR STORY" data-es="NUESTRA HISTORIA">OUR STORY</div><div class="sh-bar"></div></div>
+  <div class="about-block">
+    <p class="ab-p t"
+      data-en="Ebenezer means Stone of Help — a reminder that God's faithfulness carries us through everything. Taqueria Ebenezer was born from that same spirit: a place where family, faith, and the best Mexican street food come together right here in Stephenville, Texas."
+      data-es="Ebenezer significa Piedra de Ayuda — un recordatorio de que la fidelidad de Dios nos sostiene en todo. Taqueria Ebenezer nació de ese mismo espíritu: un lugar donde la familia, la fe y la mejor comida mexicana se unen aquí en Stephenville.">
+      Ebenezer means Stone of Help — a reminder that God's faithfulness carries us through everything. Taqueria Ebenezer was born from that same spirit: a place where family, faith, and the best Mexican street food come together right here in Stephenville, Texas.
+    </p>
+    <div class="ab-verse t"
+      data-en='"Whatever you eat or drink, do it all for the glory of God." — 1 Corinthians 10:31'
+      data-es='"Ya sea que coman o beban, háganlo todo para la gloria de Dios." — 1 Corintios 10:31'>
+      "Whatever you eat or drink, do it all for the glory of God." — 1 Corinthians 10:31
+    </div>
+    <p class="ab-p t"
+      data-en="We're proud to call Stephenville home and to serve the Tarleton State community — students, families, and neighbors are always welcome at our truck. Come hungry, leave full, and know you're cared for."
+      data-es="Nos enorgullece llamar hogar a Stephenville y servir a la comunidad de Tarleton State. Estudiantes, familias y vecinos siempre son bienvenidos. Ven con hambre, sal satisfecho, y sabe que eres querido.">
+      We're proud to call Stephenville home and to serve the Tarleton State community — students, families, and neighbors are always welcome at our truck. Come hungry, leave full, and know you're cared for.
+    </p>
+  </div>
+  <div class="section-hdr"><div class="sh-bar red"></div><div class="sh-title red t" data-en="COMMUNITY" data-es="COMUNIDAD">COMMUNITY</div><div class="sh-bar red"></div></div>
+  <div class="comm-grid">
+    <div class="comm-card"><div class="comm-icon">&#10013;</div><div class="comm-title t" data-en="Faith-rooted" data-es="Con raíces de fe">Faith-rooted</div><div class="comm-sub t" data-en="Named after God's faithfulness" data-es="Nombrado por la fidelidad de Dios">Named after God's faithfulness</div></div>
+    <div class="comm-card"><div class="comm-icon">&#127979;</div><div class="comm-title">Tarleton Proud</div><div class="comm-sub t" data-en="Serving students since day one" data-es="Sirviendo a estudiantes desde el inicio">Serving students since day one</div></div>
+    <div class="comm-card"><div class="comm-icon">&#127968;</div><div class="comm-title t" data-en="Stephenville Local" data-es="Local de Stephenville">Stephenville Local</div><div class="comm-sub t" data-en="Rooted in this community" data-es="Arraigados en esta comunidad">Rooted in this community</div></div>
+    <div class="comm-card"><div class="comm-icon">&#128149;</div><div class="comm-title t" data-en="Family-run" data-es="Negocio familiar">Family-run</div><div class="comm-sub t" data-en="Every taco made with love" data-es="Cada taco hecho con amor">Every taco made with love</div></div>
+  </div>
+</div>
+
+<!-- ══════════ LOCATION PANEL ══════════ -->
+<div id="panel-location" class="panel">
+  <div class="section-hdr"><div class="sh-bar"></div><div class="sh-title t" data-en="FIND US" data-es="ENCUÉNTRANOS">FIND US</div><div class="sh-bar"></div></div>
+  <div class="map-card">
+    <div class="map-hdr">
+      <div class="map-addr">
+        Taqueria Ebenezer
+        <span>420 W Lingleville Rd</span>
+        <span>Stephenville, TX 76401</span>
+        <span class="t" data-en="Near Tarleton State University" data-es="Cerca de Tarleton State University">Near Tarleton State University</span>
+      </div>
+      <a class="map-open-btn" href="https://maps.google.com/maps?q=420+W+Lingleville+Rd,+Stephenville,+TX+76401" target="_blank">
+        &#128205; <span class="t" data-en="Open in Maps" data-es="Abrir en Maps">Open in Maps</span> &#8599;
+      </a>
+    </div>
+    <iframe class="map-frame" title="Taqueria Ebenezer location" src="https://maps.google.com/maps?q=420+W+Lingleville+Rd,+Stephenville,+TX+76401&output=embed&z=16" loading="lazy" allowfullscreen></iframe>
+  </div>
+
+  <div class="section-hdr"><div class="sh-bar red"></div><div class="sh-title red t" data-en="HOURS" data-es="HORARIO">HOURS</div><div class="sh-bar red"></div></div>
+  <div class="hours-grid">
+    <div class="hour-row"><span class="hr-day t" data-en="Monday" data-es="Lunes">Monday</span><span class="hr-time t" data-en="Ask us!" data-es="¡Pregúntanos!">Ask us!</span></div>
+    <div class="hour-row"><span class="hr-day t" data-en="Tuesday" data-es="Martes">Tuesday</span><span class="hr-time t" data-en="Ask us!" data-es="¡Pregúntanos!">Ask us!</span></div>
+    <div class="hour-row"><span class="hr-day t" data-en="Wednesday" data-es="Miércoles">Wednesday</span><span class="hr-time t" data-en="Ask us!" data-es="¡Pregúntanos!">Ask us!</span></div>
+    <div class="hour-row"><span class="hr-day t" data-en="Thursday" data-es="Jueves">Thursday</span><span class="hr-time t" data-en="Ask us!" data-es="¡Pregúntanos!">Ask us!</span></div>
+    <div class="hour-row"><span class="hr-day t" data-en="Friday 🫔" data-es="Viernes 🫔">Friday 🫔</span><span class="hr-time t" data-en="TAMALES day! Ask us" data-es="¡Día de TAMALES! Pregúntanos">TAMALES day! Ask us</span></div>
+    <div class="hour-row"><span class="hr-day t" data-en="Saturday 🍲" data-es="Sábado 🍲">Saturday 🍲</span><span class="hr-time t" data-en="MENUDO day! Ask us" data-es="¡Día de MENUDO! Pregúntanos">MENUDO day! Ask us</span></div>
+    <div class="hour-row"><span class="hr-day t" data-en="Sunday" data-es="Domingo">Sunday</span><span class="hr-time t" data-en="Ask us!" data-es="¡Pregúntanos!">Ask us!</span></div>
+  </div>
+  <div style="margin-top:0.65rem;">
+    <a href="tel:2545924735" class="call-btn" style="margin-bottom:0.4rem;display:block;">&#128222; 254.592.4735</a>
+    <a href="tel:2544343069" class="call-btn" style="background:var(--red);display:block;">&#128222; 254.434.3069</a>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <div class="f-logo">TAQUERIA EBENEZER</div>
+  <div class="f-info">420 W Lingleville Rd · Stephenville, TX 76401 · Near Tarleton State</div>
+  <div class="f-info">&#128222; 254.592.4735 · 254.434.3069 · &#128181; Cash Only</div>
+  <div class="f-verse t" data-en='"Thus far the Lord has helped us." — 1 Samuel 7:12' data-es='"Hasta aquí nos ayudó el Señor." — 1 Samuel 7:12'>"Thus far the Lord has helped us." — 1 Samuel 7:12</div>
+</div>
+
+<script>
+const MENU_DATA = {
+  tacos: [
+    {id:'ta1',en:'Carne Asada',es:'Carne Asada',desc:'Grilled beef · cebolla · cilantro · salsa',price:3.50},
+    {id:'ta2',en:'Barbacoa',es:'Barbacoa',desc:'Slow-cooked beef cheek',price:3.50},
+    {id:'ta3',en:'Al Pastor',es:'Al Pastor',desc:'Marinated pork & pineapple',price:3.50},
+    {id:'ta4',en:'Tripa',es:'Tripa',desc:'Crispy beef tripe',price:3.50},
+    {id:'ta5',en:'Pollo',es:'Pollo',desc:'Seasoned grilled chicken',price:3.50},
+    {id:'ta6',en:'Cebolla Asada',es:'Cebolla Asada',desc:'Grilled onion',price:3.00},
+  ],
+  burritos: [
+    {id:'bu1',en:'Asada',es:'Asada',desc:'Grilled beef',price:null},
+    {id:'bu2',en:'Pastor',es:'Pastor',desc:'Marinated pork',price:null},
+    {id:'bu3',en:'Pollo',es:'Pollo',desc:'Grilled chicken',price:null},
+    {id:'bu4',en:'Brisket',es:'Brisket',desc:'Slow-smoked brisket',price:null},
+    {id:'bu5',en:'Guisada',es:'Guisada',desc:'Beef stew',price:null},
+    {id:'bu6',en:'Chicharrón',es:'Chicharrón',desc:'Crispy pork rinds',price:null},
+    {id:'bu7',en:'Steak',es:'Steak',desc:'Grilled steak',price:null},
+    {id:'bu8',en:'Pork Seasoned',es:'Puerco Sazonado',desc:'Seasoned pork',price:null},
+    {id:'bu9',en:'Chicken',es:'Pollo',desc:'Seasoned chicken',price:null},
+    {id:'bu10',en:'Barbacoa',es:'Barbacoa',desc:'Slow-cooked beef cheek',price:null},
+    {id:'bu11',en:'Pork Red Pepper',es:'Puerco Chile Rojo',desc:'Pork in red pepper sauce',price:null},
+    {id:'bu12',en:'Pork Skin',es:'Cuero de Puerco',desc:'Pork skin',price:null},
+  ],
+  breakfast: [
+    {id:'br1',en:'Ham Eggs',es:'Jamón con Huevo',desc:'Ham & scrambled eggs',price:null},
+    {id:'br2',en:'Bacon Eggs',es:'Tocino con Huevo',desc:'Bacon & scrambled eggs',price:null},
+    {id:'br3',en:'Chorizo Eggs',es:'Chorizo con Huevo',desc:'Chorizo & scrambled eggs',price:null},
+    {id:'br4',en:'Potato Eggs',es:'Papa con Huevo',desc:'Potato & scrambled eggs',price:null},
+    {id:'br5',en:'Sausage Eggs',es:'Salchicha con Huevo',desc:'Sausage & scrambled eggs',price:null},
+    {id:'br6',en:'Beans Eggs',es:'Frijoles con Huevo',desc:'Beans & scrambled eggs',price:null},
+  ],
+  bfplate: [
+    {id:'bp1',en:'Huevos a la Mexicana',es:'Huevos a la Mexicana',desc:'Breakfast plate · ask for price',price:null},
+  ],
+  drinks: [
+    {id:'dr1',en:'Mangonada 🥭',es:'Mangonada 🥭',desc:'Mango · chamoy · chili · tajín',price:null},
+    {id:'dr2',en:'Agua de Jamaica',es:'Agua de Jamaica',desc:'Fresh hibiscus water',price:null},
+    {id:'dr3',en:'Horchata',es:'Horchata',desc:'Rice & cinnamon drink',price:null},
+    {id:'dr4',en:'Tamarindo',es:'Agua de Tamarindo',desc:'Tamarind water',price:null},
+    {id:'dr5',en:'Mexican Coke 🥤',es:'Coca Mexicana 🥤',desc:'Glass bottle Coke',price:null},
+  ],
+  extras: [
+    {id:'ex1',en:'Sour Cream',es:'Crema',desc:'Extra cost',price:null},
+    {id:'ex2',en:'Avocado',es:'Aguacate',desc:'Extra cost',price:null},
+    {id:'ex3',en:'Pico de Gallo',es:'Pico de Gallo',desc:'Extra cost',price:null},
+    {id:'ex4',en:'Cheese',es:'Queso',desc:'Extra cost',price:null},
+  ]
+};
+
+let cart={}, lang='en';
+
+function buildCol(colId, items){
+  const el=document.getElementById(colId);
+  items.forEach(item=>{
+    const row=document.createElement('div');
+    row.className='item-row';
+    row.id='row-'+item.id;
+    row.innerHTML=`
+      <div class="ir-left">
+        <div class="ir-name">${item.en}</div>
+        <div class="ir-desc">${item.desc}</div>
+      </div>
+      ${item.price?`<div class="ir-price">$${item.price.toFixed(2)}</div>`:'<div class="ir-price" style="color:#aaa;font-size:0.7rem;">ask</div>'}
+      <div class="qty-ctrl">
+        <button class="qbtn" onclick="chQty('${item.id}',-1)" aria-label="remove">&#8722;</button>
+        <span class="qnum" id="qn-${item.id}">0</span>
+        <button class="qbtn" onclick="chQty('${item.id}',1)" aria-label="add">+</button>
+      </div>`;
+    el.appendChild(row);
+  });
+}
+
+function findItem(id){
+  for(const arr of Object.values(MENU_DATA)){
+    const f=arr.find(i=>i.id===id);
+    if(f) return f;
+  }
+  return null;
+}
+
+function chQty(id,d){
+  const item=findItem(id);
+  if(!item) return;
+  cart[id]=Math.max(0,(cart[id]||0)+d);
+  if(cart[id]===0) delete cart[id];
+  document.getElementById('qn-'+id).textContent=cart[id]||0;
+  document.getElementById('row-'+id).style.background=cart[id]?'#F0FAF2':'';
+  renderCart();
+}
+
+function renderCart(){
+  const keys=Object.keys(cart);
+  const empty=document.getElementById('cart-empty');
+  const lines=document.getElementById('cart-lines');
+  const total=document.getElementById('cart-total');
+  const btn=document.getElementById('place-btn');
+  if(!keys.length){
+    empty.style.display='block';
+    lines.innerHTML='';
+    total.style.display='none';
+    btn.disabled=true;
+    return;
+  }
+  empty.style.display='none';
+  total.style.display='flex';
+  btn.disabled=false;
+  let html='',tot=0,hasAsk=false;
+  keys.forEach(id=>{
+    const item=findItem(id);
+    if(!item) return;
+    const n=cart[id];
+    const sub=item.price?item.price*n:null;
+    if(sub) tot+=sub; else hasAsk=true;
+    html+=`<div class="cart-line">
+      <span class="cl-name">${lang==='es'?item.es:item.en}</span>
+      <span class="cl-qty">x${n}</span>
+      <span class="cl-price">${sub?'$'+sub.toFixed(2):'ask'}</span>
+    </div>`;
+  });
+  lines.innerHTML=html;
+  const totEl=document.getElementById('ct-amt');
+  totEl.textContent=tot>0?(hasAsk?'$'+tot.toFixed(2)+' + ask':'$'+tot.toFixed(2)):'ask for prices';
+}
+
+function placeOrder(){
+  const name=document.getElementById('fname').value.trim();
+  const phone=document.getElementById('fphone').value.trim();
+  const time=document.getElementById('ftime').value;
+  if(!name){alert(lang==='es'?'Ingresa tu nombre.':'Enter your name.');return;}
+  if(!phone){alert(lang==='es'?'Ingresa tu número.':'Enter your phone number.');return;}
+  if(!time){alert(lang==='es'?'Selecciona una hora.':'Select a pickup time.');return;}
+  if(!Object.keys(cart).length){alert(lang==='es'?'Agrega items al pedido.':'Add items to your order.');return;}
+  const tarleton=document.getElementById('ftarleton').checked;
+  const sub=document.getElementById('sc-sub');
+  sub.textContent=lang==='es'
+    ?`¡Gracias ${name}! Recoge en ${time}. Paga en efectivo al llegar.${tarleton?' Recuerda traer tu ID de Tarleton para el descuento!':''}`
+    :`Thanks ${name}! Pick up in ${time}. Pay cash when you arrive!${tarleton?' Remember your Tarleton ID for the discount!':''}`;
+  document.getElementById('success-wrap').classList.add('show');
+  document.getElementById('place-btn').disabled=true;
+  document.getElementById('place-btn').style.opacity='0.4';
+}
+
+function rateStar(n){document.querySelectorAll('.star').forEach((s,i)=>s.classList.toggle('lit',i<n));}
+function reviewDone(){setTimeout(()=>{document.getElementById('stars').innerHTML='<div style="color:#0F6E56;font-weight:800;font-size:0.82rem;" class="t" data-en="Thank you! God bless ✝" data-es="¡Gracias! Dios te bendiga ✝">Thank you! God bless ✝</div>';},400);}
+function skipReview(){document.querySelector('.review-card').style.display='none';}
+
+function showPanel(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function setLang(l,btn){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.t').forEach(el=>{
+    if(el.dataset[l]) el.innerHTML=el.dataset[l];
+  });
+  renderCart();
+}
+
+buildCol('tacos-col',MENU_DATA.tacos);
+buildCol('burritos-col',MENU_DATA.burritos);
+buildCol('breakfast-col',MENU_DATA.breakfast);
+buildCol('bfplate-col',MENU_DATA.bfplate);
+buildCol('drinks-col',MENU_DATA.drinks);
+buildCol('extras-col',MENU_DATA.extras);
+</script>
